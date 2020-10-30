@@ -45,9 +45,11 @@ public class main {
             } else {
                 switch (opcion) {
                     case 1: 
-                        System.out.println("Ingrese numero");
-                        int numero = S.nextInt();
-                        tablaH.insertar(numero);
+                        System.out.println("Ingrese Nombre de la pelicula");
+                        String Nombre = S.next();
+                        System.out.println("Ingrese ID de la pelicula");
+                        Integer ID = S.nextInt();
+                        tablaH.insertar(Nombre,ID);
                         break;   
                     case 2: 
                         System.out.println("Ingrese numero");
@@ -71,7 +73,7 @@ public class main {
                     case 4: 
                         System.out.println("Ingrese numero");
                         int eliminar = S.nextInt();
-                        tablaH.eliminar(tablaH.hash(eliminar),eliminar);
+                        tablaH.eliminar(tablaH.HashPorID(eliminar),eliminar);
                         break;   
                     default: 
                         System.out.println("\nError\n");
