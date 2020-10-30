@@ -23,24 +23,34 @@ public class TablaHash {
             
     }
     
-    public int hash(int valor){
+    public int HashPorID(int valor){
         return ((valor + 1) % maximo);
     }
     
-    public void insertar(int valor){
-        int llave = this.hash(valor);
-        tabla[llave].llenar(valor);
+    public int HashPorNombre(String Nombre){
+        int[] nombre2=new int[Nombre.length()];
+        int suma=0;
+            for(int i = 0; i<=Nombre.length()-1;i++){
+            nombre2[i]=Nombre.charAt(i);
+            suma=nombre2[i]+suma;
+        }
+            return (suma+1)%maximo;
+    }
+    
+    public void insertar(String Nombre, int ID){
+        int llave = this.HashPorNombre(Nombre);
+        tabla[llave].llenar(Nombre, ID);
     }
     
     public int buscar(int valor){
-        int llave = this.hash(valor);
+        int llave = this.HashPorID(valor);
         if (tabla[llave].libre){
             llave = -1;
         }            
         else{
             int contador = 0;
             for (int i = 0; i < tabla[llave].valores.size(); i++) {
-                if (tabla[llave].valores.get(i) == valor)
+                if (tabla[llave].valores.get(i).getID() == valor)
                 {
                     break;  
                 }                    

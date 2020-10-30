@@ -13,20 +13,21 @@ import java.util.ArrayList;
  */
 public class Nodo {
     
-    public ArrayList<Integer> valores = new ArrayList<>();
+    public ArrayList<Pelicula> valores = new ArrayList<>();
     public boolean libre;
     
     public Nodo(){
         libre = true;
     }
     
-    public void llenar(int valorIngresado){
-        valores.add(valorIngresado);
+    public void llenar(String Nombre, Integer ID){
+        Pelicula Nueva = new Pelicula(Nombre,ID);
+        valores.add(Nueva);
         libre = false;
     }    
     public void vaciar(int valorAEliminar){
         for (int i = 0; i < valores.size(); i++) {
-            if (valores.get(i) == valorAEliminar){
+            if (valores.get(i).getID() == valorAEliminar){
                 valores.remove(i);
                 break;
             }
