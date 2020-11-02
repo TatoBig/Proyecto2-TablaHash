@@ -42,6 +42,7 @@ TablaHash tablaH;
         IDtxt = new javax.swing.JLabel();
         ListaMostrar = new java.awt.List();
         jComboBox2 = new javax.swing.JComboBox<>();
+        EstadisticaButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,6 +83,13 @@ TablaHash tablaH;
             }
         });
 
+        EstadisticaButton.setText("Estadistica");
+        EstadisticaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EstadisticaButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -108,8 +116,11 @@ TablaHash tablaH;
                                     .addComponent(Asignacion)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(IDdd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(EstadisticaButton)
+                                        .addGap(10, 10, 10)))))
                         .addGap(28, 28, 28))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(ListaMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -132,8 +143,9 @@ TablaHash tablaH;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(IDdd)
                     .addComponent(IDtxt)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(99, 99, 99)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EstadisticaButton))
+                .addGap(97, 97, 97)
                 .addComponent(ListaMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -163,6 +175,7 @@ TablaHash tablaH;
         IDdd.setVisible(false);
         IDtxt.setVisible(false);
         jComboBox2.setVisible(false);
+        EstadisticaButton.setVisible(false);
         Asignacion.setText("");
     }
     private void InserciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InserciónActionPerformed
@@ -190,7 +203,6 @@ TablaHash tablaH;
             JOptionPane.showMessageDialog(this, "Se ingresaron datos con exito");
             }
             Mostrar();
-            
         }
     }//GEN-LAST:event_InserciónActionPerformed
 
@@ -207,6 +219,7 @@ TablaHash tablaH;
                                     ListaMostrar.add("Nombre: "+tablaH.tabla[i].valores.get(j).getNombre());
                                     ListaMostrar.add("Genero: "+tablaH.tabla[i].valores.get(j).getGenero());
                                     ListaMostrar.add("Año: "+tablaH.tabla[i].valores.get(j).getAnio());
+                                    ListaMostrar.add("-----------------------------");
                                 }
                                 }
                             }
@@ -214,7 +227,6 @@ TablaHash tablaH;
                         if(ListaMostrar.getItemCount()==0){
                             ListaMostrar.add("No se encontro la pelicula");
                         }
-                        
     }//GEN-LAST:event_BuscarActionPerformed
 private void Mostrar()
 {
@@ -229,6 +241,7 @@ private void Mostrar()
                                     ListaMostrar.add("Nombre: "+tablaH.tabla[i].valores.get(j).getNombre());
                                     ListaMostrar.add("Genero: "+tablaH.tabla[i].valores.get(j).getGenero());
                                     ListaMostrar.add("Año: "+tablaH.tabla[i].valores.get(j).getAnio());
+                                    ListaMostrar.add("-----------------------------");
                                 }
                                // System.out.println("");
                             }
@@ -272,6 +285,21 @@ private void Mostrar()
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         
     }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void EstadisticaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EstadisticaButtonActionPerformed
+        int Llenos = 0;
+        int Vacios = 0;
+        for (int i = 0; i < tablaH.getMaximo(); i++) {
+        if(tablaH.tabla[i].libre==false){
+            Llenos +=1;
+        }
+        if(tablaH.tabla[i].libre==true){
+            Vacios +=1;
+        }
+        }
+        ListaMostrar.add("Espacios Ocupados: "+Llenos);
+        ListaMostrar.add("Espacios Vacios: "+Vacios);
+    }//GEN-LAST:event_EstadisticaButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -337,6 +365,7 @@ private void comparador(String Nombre, int ID)
     private javax.swing.JLabel Asignaciontxt;
     private javax.swing.JButton Buscar;
     private javax.swing.JButton Eliminar;
+    private javax.swing.JButton EstadisticaButton;
     private javax.swing.JTextField IDdd;
     private javax.swing.JLabel IDtxt;
     private javax.swing.JButton Inserción;
@@ -353,5 +382,6 @@ private void comparador(String Nombre, int ID)
         IDdd.setVisible(true);
         IDtxt.setVisible(true);
         jComboBox2.setVisible(true);
+        EstadisticaButton.setVisible(true);
     }
 }
