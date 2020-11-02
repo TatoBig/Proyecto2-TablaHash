@@ -11,7 +11,7 @@ package com.mycompany.tablahash;
  */
 public class TablaHash {
     public Nodo[] tabla;
-    public int maximo = 0;
+    private int maximo = 0;
     
     public TablaHash(int tope){
         maximo = tope;
@@ -21,6 +21,10 @@ public class TablaHash {
             tabla[i] = new Nodo();
         }
             
+    }
+    
+    public int getMaximo(){
+        return maximo;
     }
     
     public int HashPorID(int valor){

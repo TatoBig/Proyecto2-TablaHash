@@ -82,7 +82,7 @@ public class main {
                         System.out.println("Ingrese numero");
                         int buscado = S.nextInt();
                         System.out.println("");
-                        for (int i = 0; i < tablaH.maximo; i++) {
+                        for (int i = 0; i < tablaH.getMaximo(); i++) {
                             if(tablaH.tabla[i].libre==false)
                             {
                                 for (int j = 0; j < tablaH.tabla[i].valores.size(); j++) {
@@ -95,7 +95,7 @@ public class main {
                         break;   
                     case 3: 
                         int a=1;
-                        for (int i = 0; i < tablaH.maximo; i++) {
+                        for (int i = 0; i < tablaH.getMaximo(); i++) {
                             if(tablaH.tabla[i].libre==false)
                             {
                                 System.out.println("#"+(a++)+"");  

@@ -109,8 +109,7 @@ TablaHash tablaH;
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(IDdd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(28, 28, 28))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(ListaMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -134,7 +133,7 @@ TablaHash tablaH;
                     .addComponent(IDdd)
                     .addComponent(IDtxt)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(99, 99, 99)
                 .addComponent(ListaMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -172,11 +171,12 @@ TablaHash tablaH;
         {
              if(Asignacion.getText()!="")
             {
-                tablaH = new TablaHash(Integer.parseInt(Asignacion.getText()));
+            tablaH = new TablaHash(Integer.parseInt(Asignacion.getText()));
             Asignaciontxt.setText("Nombre");
             Asignacion.setText("");
             RunButtons();
             flag=false;
+            JOptionPane.showMessageDialog(this, "Porfavor llenar todos los campos de texto");
             }
             
         }
@@ -187,6 +187,7 @@ TablaHash tablaH;
             comparador(Asignacion.getText(),Integer.parseInt(IDdd.getText()));
             Asignacion.setText("");
             IDdd.setText("");
+            JOptionPane.showMessageDialog(this, "Se ingresaron datos con exito");
             }
             Mostrar();
             
@@ -197,33 +198,37 @@ TablaHash tablaH;
         // TODO add your handling code here:
         ListaMostrar.clear();
         int buscado = Integer.parseInt(IDdd.getText());
-                        for (int i = 0; i < tablaH.maximo; i++) {
+                        for (int i = 0; i < tablaH.getMaximo(); i++) {
                             if(tablaH.tabla[i].libre==false)
                             {
                                 for (int j = 0; j < tablaH.tabla[i].valores.size(); j++) {
                                     if(buscado==tablaH.tabla[i].valores.get(j).getID()){
-                                    ListaMostrar.add("ID "+tablaH.tabla[i].valores.get(j).getID().toString());
-                                    ListaMostrar.add("Nombre "+tablaH.tabla[i].valores.get(j).getNombre());
-                                    ListaMostrar.add("Genero "+tablaH.tabla[i].valores.get(j).getGenero());
-                                    ListaMostrar.add("Año "+tablaH.tabla[i].valores.get(j).getAnio());
+                                    ListaMostrar.add("ID: "+tablaH.tabla[i].valores.get(j).getID().toString());
+                                    ListaMostrar.add("Nombre: "+tablaH.tabla[i].valores.get(j).getNombre());
+                                    ListaMostrar.add("Genero: "+tablaH.tabla[i].valores.get(j).getGenero());
+                                    ListaMostrar.add("Año: "+tablaH.tabla[i].valores.get(j).getAnio());
                                 }
                                 }
                             }
                         }
+                        if(ListaMostrar.getItemCount()==0){
+                            ListaMostrar.add("No se encontro la pelicula");
+                        }
+                        
     }//GEN-LAST:event_BuscarActionPerformed
 private void Mostrar()
 {
     ListaMostrar.clear();
         int a=1;
-                        for (int i = 0; i < tablaH.maximo; i++) {
+                        for (int i = 0; i < tablaH.getMaximo(); i++) {
                             if(tablaH.tabla[i].libre==false)
                             {
                                 ListaMostrar.add("#"+(a++)+"");  
                                 for (int j = 0; j < tablaH.tabla[i].valores.size(); j++) {
-                                    ListaMostrar.add("ID "+tablaH.tabla[i].valores.get(j).getID().toString());
-                                    ListaMostrar.add("Nombre "+tablaH.tabla[i].valores.get(j).getNombre());
-                                    ListaMostrar.add("Genero "+tablaH.tabla[i].valores.get(j).getGenero());
-                                    ListaMostrar.add("Año "+tablaH.tabla[i].valores.get(j).getAnio());
+                                    ListaMostrar.add("ID: "+tablaH.tabla[i].valores.get(j).getID().toString());
+                                    ListaMostrar.add("Nombre: "+tablaH.tabla[i].valores.get(j).getNombre());
+                                    ListaMostrar.add("Genero: "+tablaH.tabla[i].valores.get(j).getGenero());
+                                    ListaMostrar.add("Año: "+tablaH.tabla[i].valores.get(j).getAnio());
                                 }
                                // System.out.println("");
                             }
@@ -236,20 +241,22 @@ private void Mostrar()
         // TODO add your handling code here:
         ListaMostrar.clear();
         int a=1;
-                        for (int i = 0; i < tablaH.maximo; i++) {
+                        for (int i = 0; i < tablaH.getMaximo(); i++) {
                             if(tablaH.tabla[i].libre==false)
                             {
                                 ListaMostrar.add("#"+(a++)+"");  
                                 for (int j = 0; j < tablaH.tabla[i].valores.size(); j++) {
-                                    ListaMostrar.add("ID "+tablaH.tabla[i].valores.get(j).getID().toString());
-                                    ListaMostrar.add("Nombre "+tablaH.tabla[i].valores.get(j).getNombre());
-                                    ListaMostrar.add("Genero "+tablaH.tabla[i].valores.get(j).getGenero());
-                                    ListaMostrar.add("Año "+tablaH.tabla[i].valores.get(j).getAnio());
+                                    ListaMostrar.add("ID: "+tablaH.tabla[i].valores.get(j).getID().toString());
+                                    ListaMostrar.add("Nombre: "+tablaH.tabla[i].valores.get(j).getNombre());
+                                    ListaMostrar.add("Genero: "+tablaH.tabla[i].valores.get(j).getGenero());
+                                    ListaMostrar.add("Año: "+tablaH.tabla[i].valores.get(j).getAnio());
                                 }
                                // System.out.println("");
                             }
                             else{
-                              //  System.out.println("0");
+                              if(ListaMostrar.getItemCount()==0){
+                            ListaMostrar.add("Aun no se ha agregado nada al inventario");
+                        }
                             }
                         }
     }//GEN-LAST:event_MostrarActionPerformed
@@ -263,7 +270,7 @@ private void Mostrar()
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     /**
@@ -323,6 +330,7 @@ private void comparador(String Nombre, int ID)
         String gen = JOptionPane.showInputDialog("Escriba Genero", "");
         tablaH.insertar(Nombre,ID,anio,gen);
     }
+
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Asignacion;
