@@ -11,7 +11,7 @@ package com.mycompany.tablahash;
  */
 public class TablaHash {
     public Nodo[] tabla;
-    public int maximo = 0;
+    private int maximo = 0;
     
     public TablaHash(int tope){
         maximo = tope;
@@ -21,6 +21,10 @@ public class TablaHash {
             tabla[i] = new Nodo();
         }
             
+    }
+    
+    public int getMaximo(){
+        return maximo;
     }
     
     public int HashPorID(int valor){
@@ -37,9 +41,9 @@ public class TablaHash {
             return (suma+1)%maximo;
     }
     
-    public void insertar(String Nombre, int ID){
-        int llave = this.HashPorNombre(Nombre);
-        tabla[llave].llenar(Nombre, ID);
+    public void insertar(String Nombre, int ID, String anio, String gen){
+        int llave = this.HashPorID(ID);
+        tabla[llave].llenar(Nombre, ID, anio, gen);
     }
     
     public int buscar(int valor){
@@ -49,14 +53,14 @@ public class TablaHash {
         }            
         else{
             int contador = 0;
-            for (int i = 0; i < tabla[llave].valores.size(); i++) {
-                if (tabla[llave].valores.get(i).getID() == valor)
+            for (int i = 0; i < tabla[llave].peliculas.size(); i++) {
+                if (tabla[llave].peliculas.get(i).getID() == valor)
                 {
                     break;  
                 }                    
                 contador++;
             }
-            if (contador == tabla[llave].valores.size())
+            if (contador == tabla[llave].peliculas.size())
             {
                 llave = -1;
             }
@@ -64,8 +68,9 @@ public class TablaHash {
         return llave;
     }
     
-    public void eliminar(int llave, int valor){
-        tabla[llave].vaciar(valor);
+    public void eliminar(int ID){
+        int llave = this.HashPorID(ID);
+        tabla[llave].vaciar(ID);
     }
 }
 

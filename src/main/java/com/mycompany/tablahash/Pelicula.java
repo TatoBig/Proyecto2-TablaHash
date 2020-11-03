@@ -12,10 +12,30 @@ package com.mycompany.tablahash;
 public class Pelicula {
     private String Nombre;
     private Integer ID;
+    private String Genero;
+    private String Anio;
     
-    public Pelicula (String Nombre, Integer ID){
+    public Pelicula (String Nombre, Integer ID, String anio, String gen){
         this.Nombre=Nombre;
         this.ID = ID;
+        this.Anio=anio;
+        this.Genero=gen;
+    }
+
+    public String getGenero() {
+        return Genero;
+    }
+
+    public void setGenero(String Genero) {
+        this.Genero = Genero;
+    }
+
+    public String getAnio() {
+        return Anio;
+    }
+
+    public void setAnio(String Anio) {
+        this.Anio = Anio;
     }
     
     public String getNombre(){
