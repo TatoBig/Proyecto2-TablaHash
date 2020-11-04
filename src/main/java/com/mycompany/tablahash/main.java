@@ -112,7 +112,7 @@ public class main {
                     case 4: 
                         System.out.println("Ingrese numero");
                         int eliminar = S.nextInt();
-                        tablaH.eliminar(tablaH.HashPorID(eliminar),eliminar);
+                        /*tablaH.eliminar(tablaH.HashPorID(eliminar),eliminar);*/
                         break;   
                     default: 
                         System.out.println("\nError\n");
